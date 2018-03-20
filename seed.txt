@@ -1,0 +1,30 @@
+#### Contents of the preconfiguration file (for stretch)
+### Localization
+d-i	debian-installer/country	string	US
+d-i	debian-installer/locale	select	en_US.UTF-8
+
+# Keyboard selection.
+d-i	keyboard-configuration/unsupported_layout	boolean	true
+
+### Network configuration
+# netcfg will choose an interface that has link if possible. This makes it
+# skip displaying a list if there is more than one interface.
+d-i netcfg/choose_interface select auto
+
+### Mirror settings
+d-i mirror/country string manual
+d-i mirror/http/hostname string http.us.debian.org
+d-i mirror/http/directory string /debian
+d-i mirror/http/proxy string
+
+### Clock and time zone setup
+# Controls whether or not the hardware clock is set to UTC.
+d-i clock-setup/utc boolean true
+
+### Apt setup
+### Package selection
+d-i pkgsel/include string openssh-server
+popularity-contest popularity-contest/participate boolean false
+
+# Avoid that last message about the install being complete.
+d-i finish-install/reboot_in_progress note
